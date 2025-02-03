@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8qrndxg2l1hg"]
+
+[ext_resource type="Script" path="res://Scripts/drawer.gd" id="1_4h64w"]
+[ext_resource type="Texture2D" uid="uid://cy457oxx2u6w4" path="res://Assets/sword.png" id="3_q5pho"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_av60f"]
+a = Vector2(-0.5, 1.5)
+b = Vector2(-0.5, 2.5)
+
+[node name="sword" type="Node2D"]
+z_index = 5
+script = ExtResource("1_4h64w")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 0.5
+
+[node name="cursor" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_q5pho")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(1, -50)
+shape = SubResource("SegmentShape2D_av60f")

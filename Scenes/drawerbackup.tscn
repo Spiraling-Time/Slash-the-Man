@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7qh0gjns6sga"]
+
+[ext_resource type="Script" path="res://Scripts/drawer.gd" id="1_rmgqj"]
+[ext_resource type="Texture2D" uid="uid://d0wquytk86dp2" path="res://Assets/sword (1).png" id="2_771f5"]
+[ext_resource type="Texture2D" uid="uid://cfs7qttxwdebj" path="res://Assets/icon.svg" id="3_wmeye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82lcy"]
+size = Vector2(2, 2)
+
+[node name="sword" type="Node2D"]
+z_index = 5
+script = ExtResource("1_rmgqj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 0.5
+
+[node name="cursor" type="Sprite2D" parent="."]
+position = Vector2(0, 48)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_771f5")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_82lcy")
+debug_color = Color(0.890035, 0, 0.0794543, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_wmeye")
+
+[node name="RayCast2D1" type="RayCast2D" parent="."]
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]

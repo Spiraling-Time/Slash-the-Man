@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=3 uid="uid://d4cdfwa8hnjw"]
+
+[ext_resource type="Script" path="res://Scripts/enemies.gd" id="1_ft03w"]
+[ext_resource type="Texture2D" uid="uid://dq7u2bg7ro3nl" path="res://Assets/Not Stickboss (1).png" id="2_ktcwg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i17q"]
+atlas = ExtResource("2_ktcwg")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1exta"]
+radius = 49.0408
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts6ho"]
+size = Vector2(86, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opsit"]
+size = Vector2(85, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bb1nc"]
+size = Vector2(31, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhx1c"]
+size = Vector2(18, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l27j"]
+size = Vector2(23, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xs47b"]
+size = Vector2(24, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt6s6"]
+size = Vector2(24, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr1jf"]
+size = Vector2(23, 16)
+
+[node name="enemies" type="Node2D"]
+script = ExtResource("1_ft03w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_2i17q")
+
+[node name="Wounds" type="Node2D" parent="."]
+
+[node name="head_wound" type="ColorRect" parent="Wounds"]
+visible = false
+offset_left = -57.0
+offset_top = -176.0
+offset_right = 56.0
+offset_bottom = -109.0
+
+[node name="head" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
+position = Vector2(0, -125)
+shape = SubResource("CircleShape2D_1exta")
+
+[node name="armL" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armL"]
+position = Vector2(58, -6)
+shape = SubResource("RectangleShape2D_ts6ho")
+
+[node name="armR" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armR"]
+position = Vector2(-58.5, -6)
+shape = SubResource("RectangleShape2D_opsit")
+
+[node name="body" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_bb1nc")
+
+[node name="neck" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="neck"]
+position = Vector2(0, -70)
+shape = SubResource("RectangleShape2D_qhx1c")
+
+[node name="legL" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="legL"]
+position = Vector2(15.5, 117)
+shape = SubResource("RectangleShape2D_7l27j")
+
+[node name="legR" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="legR"]
+position = Vector2(-16, 117)
+shape = SubResource("RectangleShape2D_xs47b")
+
+[node name="footL" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="footL"]
+position = Vector2(39, 162)
+shape = SubResource("RectangleShape2D_bt6s6")
+
+[node name="footR" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="footR"]
+position = Vector2(-39.5, 162)
+shape = SubResource("RectangleShape2D_qr1jf")
+
+[connection signal="area_entered" from="head" to="." method="_on_head_area_entered"]
+[connection signal="area_entered" from="armL" to="." method="_on_arm_l_area_entered"]
+[connection signal="area_entered" from="armR" to="." method="_on_arm_r_area_entered"]
+[connection signal="area_entered" from="body" to="." method="_on_body_area_entered"]
+[connection signal="area_entered" from="neck" to="." method="_on_neck_area_entered"]
+[connection signal="area_exited" from="neck" to="." method="_on_neck_area_exited"]
+[connection signal="area_entered" from="legL" to="." method="_on_leg_l_area_entered"]
+[connection signal="area_entered" from="legR" to="." method="_on_leg_r_area_entered"]
+[connection signal="area_entered" from="footL" to="." method="_on_foot_l_area_entered"]
+[connection signal="area_entered" from="footR" to="." method="_on_foot_r_area_entered"]

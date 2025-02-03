@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwagm05lurtf7"]
+
+[ext_resource type="Script" path="res://Scripts/realdrawer.gd" id="1_jdd8c"]
+
+[node name="realdrawer" type="Node2D"]
+script = ExtResource("1_jdd8c")
+
+[node name="RayCast2D1" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false

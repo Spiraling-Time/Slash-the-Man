@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://d4cdfwa8hnjw"]
+
+[ext_resource type="Script" path="res://Scripts/enemies.gd" id="1_ft03w"]
+[ext_resource type="Texture2D" uid="uid://c4k1bo6ividdi" path="res://Assets/Stickboss.png" id="2_7jbkc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i17q"]
+atlas = ExtResource("2_7jbkc")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1exta"]
+radius = 49.0408
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_japkr"]
+a = Vector2(-39, 19)
+b = Vector2(45, -4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tqqm2"]
+a = Vector2(45, 19)
+b = Vector2(-39, -4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_j7j3c"]
+a = Vector2(48, 91)
+b = Vector2(48, -50)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7brth"]
+a = Vector2(35, 72)
+b = Vector2(-9, -34)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bvx3c"]
+a = Vector2(-55, 72)
+b = Vector2(-11, -34)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_woybu"]
+a = Vector2(34, 73)
+b = Vector2(57, 73)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wa3uq"]
+a = Vector2(-28, 38)
+b = Vector2(-51, 38)
+
+[node name="enemies" type="Node2D"]
+script = ExtResource("1_ft03w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_2i17q")
+
+[node name="head" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
+position = Vector2(0, -125)
+shape = SubResource("CircleShape2D_1exta")
+
+[node name="armL" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armL"]
+position = Vector2(41, -25)
+shape = SubResource("SegmentShape2D_japkr")
+
+[node name="armR" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armR"]
+position = Vector2(-47, -25)
+shape = SubResource("SegmentShape2D_tqqm2")
+
+[node name="body" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+position = Vector2(-47, -25)
+shape = SubResource("SegmentShape2D_j7j3c")
+
+[node name="legL" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="legL"]
+position = Vector2(10, 101)
+shape = SubResource("SegmentShape2D_7brth")
+
+[node name="legR" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="legR"]
+position = Vector2(10, 101)
+shape = SubResource("SegmentShape2D_bvx3c")
+
+[node name="footL" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="footL"]
+position = Vector2(10, 101)
+shape = SubResource("SegmentShape2D_woybu")
+
+[node name="footR" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="footR"]
+position = Vector2(-16, 135)
+shape = SubResource("SegmentShape2D_wa3uq")
+
+[connection signal="area_entered" from="head" to="." method="_on_head_area_entered"]
+[connection signal="area_entered" from="armL" to="." method="_on_arm_l_area_entered"]
+[connection signal="area_entered" from="armR" to="." method="_on_arm_r_area_entered"]
+[connection signal="area_entered" from="body" to="." method="_on_body_area_entered"]
+[connection signal="area_entered" from="legL" to="." method="_on_leg_l_area_entered"]
+[connection signal="area_entered" from="legR" to="." method="_on_leg_r_area_entered"]
+[connection signal="area_entered" from="footL" to="." method="_on_foot_l_area_entered"]
+[connection signal="area_entered" from="footR" to="." method="_on_foot_r_area_entered"]

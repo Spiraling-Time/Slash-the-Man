@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxu3ognk511ik"]
+
+[ext_resource type="PackedScene" uid="uid://c8qrndxg2l1hg" path="res://Scenes/drawer.tscn" id="1_0g2gl"]
+[ext_resource type="Script" path="res://Scripts/main_screen.gd" id="1_vj73i"]
+[ext_resource type="PackedScene" uid="uid://d4cdfwa8hnjw" path="res://Scenes/enemies.tscn" id="2_488d6"]
+
+[node name="Main Screen" type="Node2D"]
+script = ExtResource("1_vj73i")
+
+[node name="enemies" parent="." instance=ExtResource("2_488d6")]
+position = Vector2(0, -193)
+
+[node name="sword" parent="." instance=ExtResource("1_0g2gl")]
